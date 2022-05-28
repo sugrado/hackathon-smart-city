@@ -17,7 +17,7 @@ namespace HackathonServer.Entity.Concrete
         public string Surname { get; set; }
         public string FullName { get; set; }
         public string Email { get; set; }
-        public int Score { get; set; }
+        public double Score { get; set; }
         /// <summary>
         /// Shit code
         /// </summary>

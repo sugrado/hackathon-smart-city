@@ -28,5 +28,14 @@ namespace HackathonServer.WebAPI.Controllers
                 return Ok(result);
             return BadRequest(result);
         }
+
+        [HttpGet("getWithRecords/{id:int}")]
+        public async Task<IActionResult> GetWasteCentersWithRecords(int id)
+        {
+            var result = await _service.GetWasteCentersWithRecords(id);
+            if (result.Success)
+                return Ok(result);
+            return BadRequest(result);
+        }
     }
 }

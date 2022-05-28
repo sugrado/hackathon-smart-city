@@ -3,12 +3,15 @@ using HackathonServer.Core.Utilities.Results;
 using HackathonServer.DataAccess.Concrete;
 using HackathonServer.Entity.Concrete;
 using HackathonServer.Entity.Dto;
+using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace HackathonServer.Business.Services
 {
     public interface IWasteCenterService : IEntityRepository<WasteCenter>
     {
         Task<IDataResult<WasteCenter>> AddWasteCenter(AddWasteCenterDto addWasteCenterDto);
+        Task<IDataResult<WasteCenterPreviewDto>> GetWasteCentersWithRecords(int wasteCenterId);
     }
     public class WasteCenterService : EfRepositoryBase<WasteCenter>, IWasteCenterService
     {
@@ -35,6 +38,24 @@ namespace HackathonServer.Business.Services
                 return new SuccessDataResult<WasteCenter>(result.Data, result.Message);
 
             return new ErrorDataResult<WasteCenter>(result.Message);
+        }
+
+        public async Task<IDataResult<WasteCenterPreviewDto>> GetWasteCentersWithRecords(int wasteCenterId)
+        {
+            var now = DateTime.Now;
+            var result = await _context
+                .WasteCenters
+                .AsNoTracking()
+                .Where(p => !p.Deleted &&
+                            p.Id == wasteCenterId)
+                .Select(p => new WasteCenterPreviewDto
+                {
+                    WasteCenter = p,
+                    Users = p.WasteRecords.Select(c => c.Citizen)
+                })
+                .FirstOrDefaultAsync();
+
+            return new SuccessDataResult<WasteCenterPreviewDto>(result, "Başarılı");
         }
     }
 }

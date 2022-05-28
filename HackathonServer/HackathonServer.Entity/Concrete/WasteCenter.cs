@@ -13,5 +13,6 @@ namespace HackathonServer.Entity.Concrete
         public double UsedCapacity { get; set; }
         public short PercentageOfCapacity { get; set; }
         public Neighbourhood Neighbourhood { get; set; }
+        public List<WasteRecord> WasteRecords { get; set; }
     }
 }
