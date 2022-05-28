@@ -24,6 +24,18 @@ builder.Services.AddFluentValidation(opt =>
     opt.RegisterValidatorsFromAssemblyContaining<AddNeighbourhoodValidator>();
 });
 builder.Services.UseCustomValidationResponse();
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: "_myAllowSpecificOrigins",
+                      builder =>
+                      {
+                          builder.SetIsOriginAllowed(_ => true)
+                                 .AllowAnyHeader()
+                                 .AllowAnyMethod()
+                                 .AllowCredentials();
+
+                      });
+});
 
 var app = builder.Build();
 
@@ -35,6 +47,9 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCors("_myAllowSpecificOrigins");
+
 
 app.UseAuthorization();
 

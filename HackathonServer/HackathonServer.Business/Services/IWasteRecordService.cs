@@ -3,6 +3,7 @@ using HackathonServer.Core.Utilities.Results;
 using HackathonServer.DataAccess.Concrete;
 using HackathonServer.Entity.Concrete;
 using HackathonServer.Entity.Dto;
+using Microsoft.EntityFrameworkCore;
 
 namespace HackathonServer.Business.Services
 {
@@ -15,15 +16,12 @@ namespace HackathonServer.Business.Services
     {
         private readonly HackathonServerDbContext _context;
         private readonly IUserService _userService;
-        private readonly IWasteCenterService _wasteCenterService;
 
         public WasteRecordService(HackathonServerDbContext context,
-            IUserService userService,
-            IWasteCenterService wasteCenterService) : base(context)
+            IUserService userService) : base(context)
         {
             _context = context;
             _userService = userService;
-            _wasteCenterService = wasteCenterService;
         }
 
         public async Task<IDataResult<WasteRecord>> AddWasteRecord(AddWasteRecordDto addWasteRecordDto)
@@ -32,7 +30,7 @@ namespace HackathonServer.Business.Services
             if (!citizen.Success)
                 return new ErrorDataResult<WasteRecord>(citizen.Message);
 
-            var result = await Create(new WasteRecord
+            await _context.WasteRecords.AddAsync(new WasteRecord
             {
                 UnitSize = addWasteRecordDto.UnitSize,
                 CategoryId = addWasteRecordDto.CategoryId,
@@ -40,25 +38,43 @@ namespace HackathonServer.Business.Services
                 WasteCenterId = addWasteRecordDto.WasteCenterId,
             });
 
-            var wasteCenter = await _wasteCenterService.GetById(addWasteRecordDto.WasteCenterId);
+            var wasteCenter = await _context
+                .WasteCenters
+                .AsNoTracking()
+                .Where(p => p.Id == addWasteRecordDto.WasteCenterId)
+                .FirstOrDefaultAsync();
 
-            if (!wasteCenter.Success)
-                return new ErrorDataResult<WasteRecord>(result.Message);
+            if (wasteCenter == null)
+                return new ErrorDataResult<WasteRecord>("Atık merkezi bilgisine ulaşılamadı.");
 
-            wasteCenter.Data.UsedCapacity += addWasteRecordDto.UnitSize;
-            wasteCenter.Data.PercentageOfCapacity =
-                decimal.ToInt16((Math.Round((decimal)((100 / wasteCenter.Data.Capacity) * wasteCenter.Data.UsedCapacity),
+            if (wasteCenter.UsedCapacity >= wasteCenter.Capacity)
+                return new ErrorDataResult<WasteRecord>("Atık merkezinin kapasitesi doldu..");
+
+            wasteCenter.UsedCapacity += addWasteRecordDto.UnitSize;
+            wasteCenter.PercentageOfCapacity =
+                decimal.ToInt16((Math.Round((decimal)((100 / wasteCenter.Capacity) * wasteCenter.UsedCapacity),
                 MidpointRounding.AwayFromZero)));
 
-            if (wasteCenter.Data.PercentageOfCapacity > 100)
-                wasteCenter.Data.PercentageOfCapacity = 100;
+            var categoryCoefficient = await _context
+                .Categories
+                .AsNoTracking()
+                .Where(p => p.Id == addWasteRecordDto.CategoryId)
+                .Select(p => p.Coefficient)
+                .FirstOrDefaultAsync();
 
-            await _wasteCenterService.Update(wasteCenter.Data);
+            if (categoryCoefficient == default)
+                return new ErrorDataResult<WasteRecord>("Kategoriye ait çarpım katsayısı bilgisi girilmemiş.");
 
-            if (result.Success)
-                return new SuccessDataResult<WasteRecord>(result.Data, result.Message);
+            citizen.Data.Score += categoryCoefficient * addWasteRecordDto.UnitSize;
 
-            return new ErrorDataResult<WasteRecord>(result.Message);
+            if (wasteCenter.PercentageOfCapacity > 100)
+                wasteCenter.PercentageOfCapacity = 100;
+
+            _context.Users.Update(citizen.Data);
+            _context.WasteCenters.Update(wasteCenter);
+            await _context.SaveChangesAsync();
+
+            return new ErrorDataResult<WasteRecord>("Kayıt başarıyla eklendi.");
         }
     }
 }
