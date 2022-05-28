@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
-import yildiz from "../assets/yıldız-02-01.png";
+import yildiz from "../assets/yıldız 55-01 (1).png";
 
 function Profile({ handleLogOut }) {
    const [user, setUser] = useState({});
