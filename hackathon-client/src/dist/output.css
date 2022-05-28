@@ -526,13 +526,15 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 
 .leadership-first{
+  margin: auto;
   margin-bottom: 0.75rem;
   display: flex;
+  width: 80%;
   justify-content: space-between;
   --tw-bg-opacity: 1;
   background-color: rgb(255 210 4 / var(--tw-bg-opacity));
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
   padding-left: 1.25rem;
   padding-right: 1.25rem;
   --tw-text-opacity: 1;
@@ -554,13 +556,15 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 
 .leadership-item{
+  margin: auto;
   margin-bottom: 0.75rem;
   display: flex;
+  width: 80%;
   justify-content: space-between;
   --tw-bg-opacity: 1;
   background-color: rgb(50 68 90 / var(--tw-bg-opacity));
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
   padding-left: 1.25rem;
   padding-right: 1.25rem;
   --tw-text-opacity: 1;
@@ -626,6 +630,11 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-right: 1.25rem;
 }
 
+.my-auto{
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
 .mt-7{
   margin-top: 1.75rem;
 }
@@ -670,8 +679,16 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-left: 0.5rem;
 }
 
+.ml-3{
+  margin-left: 0.75rem;
+}
+
 .box-border{
   box-sizing: border-box;
+}
+
+.block{
+  display: block;
 }
 
 .flex{
@@ -710,6 +727,14 @@ Ensure the default browser behavior of the `hidden` attribute.
   height: 25%;
 }
 
+.h-20{
+  height: 5rem;
+}
+
+.h-24{
+  height: 6rem;
+}
+
 .min-h-screen{
   min-height: 100vh;
 }
@@ -742,16 +767,24 @@ Ensure the default browser behavior of the `hidden` attribute.
   width: 4rem;
 }
 
-.min-w-\[200px\]{
-  min-width: 200px;
+.w-4{
+  width: 1rem;
 }
 
-.min-w-\[100px\]{
-  min-width: 100px;
+.w-4\/5{
+  width: 80%;
+}
+
+.w-80{
+  width: 20rem;
 }
 
 .min-w-\[150px\]{
   min-width: 150px;
+}
+
+.min-w-\[170px\]{
+  min-width: 170px;
 }
 
 .cursor-pointer{

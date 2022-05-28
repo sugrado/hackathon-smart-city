@@ -18,8 +18,12 @@ function Centers() {
 
          <div className="mt-7">
             {centers.map((center) => (
-               <NavLink key={center.id} to={`/center/${center.id}`}>
-                  <div className=" center w-full  py-5 px-5   transition-all flex flex-col bg-lacivert text-white mb-3 rounded">
+               <NavLink
+                  key={center.id}
+                  to={`/center/${center.id}`}
+                  className="w-4/5 m-auto block"
+               >
+                  <div className=" center   py-5 px-5   transition-all flex flex-col bg-lacivert text-white mb-3 rounded">
                      <h1 className=" mb-2 uppercase font-semibold self-center text-lg  bg-buyuksehir text-black py-1 px-5 rounded">
                         {center.name}
                      </h1>

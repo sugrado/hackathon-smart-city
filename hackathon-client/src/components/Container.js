@@ -67,6 +67,8 @@ function Container() {
                );
                localStorage.setItem("userFullName", res.data.data.fullName);
                localStorage.setItem("userRole", res.data.data.typeId);
+               setLogInEmail("");
+               setLogInPassword("");
             },
             (err) => {
                toast.error(err.response.data.message);
@@ -108,25 +110,26 @@ function Container() {
    return (
       <Router>
          <div className="font-poppins">
-            <nav className="flex justify-between h-14 text-black bg-buyuksehir  items-center px-10 border-b-[1px] border-gray-300">
+            <nav className="flex justify-between h-20 text-black bg-buyuksehir  items-center px-10 border-b-[1px] border-gray-300">
                <div className="flex items-center">
                   <img
                      alt=""
-                     className="w-10 h-10 border-[1px] border-black mr-2"
+                     className="w-16 h-16 border-[1px] border-black mr-2"
                      src={belediye}
                   />
-                  <img className="w-10 h-10" src={logo} alt="resim" />
+                  <img className="w-16 h-16" src={logo} alt="resim" />
                   <p className="ml-5 text-2xl font-bold">Atık Kazanç Sistemi</p>
                </div>
                {isAuthenticated ? (
                   <div className="group relative text-white">
                      <div
-                        className="bg-lacivert py-2 px-3 rounded cursor-pointer min-w-[150px] text-center"
+                        className="bg-lacivert py-2 px-3 rounded cursor-pointer min-w-[170px] text-center"
                         onClick={() =>
                            setMenuControl((prevState) => !prevState)
                         }
                      >
                         {userFullName}
+                        <i class="fa-solid fa-caret-down ml-3"></i>
                      </div>
 
                      {menuControl && (
@@ -167,7 +170,7 @@ function Container() {
             </nav>
 
             <main className="flex">
-               <aside className=" w-60 min-h-screen py-5 px-5 border-r-[1px] border-gray-200">
+               <aside className="w-80 min-h-screen py-5 px-5 border-r-[1px] border-gray-200">
                   <div className="flex flex-col">
                      <NavLink className="navlink" to="/">
                         Anasayfa
