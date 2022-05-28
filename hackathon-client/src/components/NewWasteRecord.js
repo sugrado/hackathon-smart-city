@@ -1,8 +1,11 @@
 import { useState } from "react";
 
-function Admin() {
+function NewWasteRecord() {
    const [identityNumber, setIdentityNumber] = useState("");
    const [weight, setWeight] = useState("");
+   const [products, setProducts] = useState([
+      { title: "Kağıt", weight: "1232" },
+   ]);
 
    const handleAdminFormSubmit = () => {};
    return (
@@ -46,4 +49,4 @@ function Admin() {
    );
 }
 
-export default Admin;
+export default NewWasteRecord;

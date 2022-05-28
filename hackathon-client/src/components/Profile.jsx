@@ -8,7 +8,7 @@ function Profile({ handleLogOut }) {
             Mustafa Hıncal
          </div>
          <div className="flex bg-lacivert py-4  px-5 items-center mb-2 mt-5 w-10/12 m-auto">
-            <i class="fa-solid fa-id-card  mr-5 text-buyuksehir text-2xl"></i>
+            <i className="fa-solid fa-id-card  mr-5 text-buyuksehir text-2xl"></i>
 
             <div className="flex flex-col">
                <h1 className="text-gray-300">TC Kimlik Numarası</h1>
@@ -17,7 +17,7 @@ function Profile({ handleLogOut }) {
          </div>
 
          <div className="flex bg-lacivert py-4  px-5 items-center my-2 w-10/12 m-auto">
-            <i class="fa-solid fa-envelope  mr-5 text-buyuksehir text-2xl"></i>
+            <i className="fa-solid fa-envelope  mr-5 text-buyuksehir text-2xl"></i>
             <div className="flex flex-col">
                <h1 className="text-gray-300">E-Posta</h1>
                <p className="text-white">abc@gmail.com</p>
@@ -29,7 +29,7 @@ function Profile({ handleLogOut }) {
                <h1>Haftalık Puanınız</h1>
                <p>
                   1231
-                  <i class="fa-solid fa-bullseye ml-2"></i>
+                  <i className="fa-solid fa-bullseye ml-2"></i>
                </p>
             </div>
          </div>
@@ -39,7 +39,7 @@ function Profile({ handleLogOut }) {
                <h1>Genel Puanınız</h1>
                <p>
                   9123
-                  <i class="fa-solid fa-bullseye ml-2"></i>
+                  <i className="fa-solid fa-bullseye ml-2"></i>
                </p>
             </div>
          </div>

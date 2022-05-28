@@ -10,7 +10,7 @@ function Leadership() {
             <div className=" transition-all shadow-sm hover:shadow-center bg-buyuksehir text-black hover:bg-lacivert hover:text-buyuksehir py-3 px-5 flex justify-between mb-3">
                <div className="flex flex-between items-center">
                   <h1> 1 ) Mustafa Hıncal</h1>
-                  <i class="fa-solid fa-crown ml-2"></i>
+                  <i className="fa-solid fa-crown ml-2"></i>
                </div>
                <p>Geri Dönüştürme Puanı : 6230</p>
             </div>

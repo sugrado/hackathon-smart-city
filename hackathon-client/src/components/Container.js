@@ -11,9 +11,24 @@ import Centers from "./Centers";
 import Leadership from "./Leadership";
 import Center from "./Center";
 import Profile from "./Profile";
-import Admin from "./Admin";
+import NewWasteRecord from "./NewWasteRecord";
+
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import NewCenterRecord from "./NewCenterRecord";
 
 function Container() {
+   const notify = () =>
+      toast.error("Kullanıcı Adı veya Şifre hatalı", {
+         position: "bottom-right",
+         autoClose: 5000,
+         hideProgressBar: false,
+         closeOnClick: true,
+         pauseOnHover: true,
+         draggable: true,
+         progress: undefined,
+      });
+
    const [signUppassword, setSignUpPassword] = useState("");
    const [logInPassword, setLogInPassword] = useState("");
    const [signUpEmail, setSignUpEmail] = useState("");
@@ -28,6 +43,28 @@ function Container() {
    const [menuControl, setMenuControl] = useState(false);
 
    const handleLogInSubmit = (e) => {
+      // Giriş başarılı ise;
+      // toast.success("🦄Giriş başarılı", {
+      //    position: "bottom-right",
+      //    autoClose: 5000,
+      //    hideProgressBar: false,
+      //    closeOnClick: true,
+      //    pauseOnHover: true,
+      //    draggable: true,
+      //    progress: undefined,
+      // });
+
+      // giriş başarısız ise
+      // toast.error("Kullanıcı Adı veya Şifre hatalı", {
+      //    position: "bottom-right",
+      //    autoClose: 5000,
+      //    hideProgressBar: false,
+      //    closeOnClick: true,
+      //    pauseOnHover: true,
+      //    draggable: true,
+      //    progress: undefined,
+      // });
+
       e.preventDefault();
       setModalLogInControl(false);
       setIsAuthenticated(true);
@@ -49,11 +86,6 @@ function Container() {
          <div className="font-poppins">
             <nav className="flex justify-between h-14 text-black bg-buyuksehir  items-center px-10 border-b-[1px] border-gray-300">
                <div className="logo">Logo</div>
-               {isAdmin && (
-                  <div className="btn">
-                     <NavLink to="/admin">Admin Paneli</NavLink>
-                  </div>
-               )}
                {isAuthenticated ? (
                   <div className="group relative text-white">
                      <div
@@ -118,6 +150,20 @@ function Container() {
                         Liderlik
                      </NavLink>
                   </div>
+
+                  {isAdmin && (
+                     <div>
+                        <hr className="py-[0.2px] bg-gray-500 bg-opacity-50 my-3 rounded-md" />
+                        <div className="flex flex-col">
+                           <NavLink className="navlink" to="/newWasteRecord">
+                              Yeni Atık Kaydet
+                           </NavLink>
+                           <NavLink className="navlink" to="/newCenterRecord">
+                              Atık Merkezi Ekle
+                           </NavLink>
+                        </div>
+                     </div>
+                  )}
                </aside>
 
                <section className="px-5 py-10 w-full">
@@ -127,7 +173,14 @@ function Container() {
                      <Route path="/news" element={<News />} />
                      <Route path="/leadership" element={<Leadership />} />
                      <Route path="/center/:id" element={<Center />} />
-                     <Route path="/admin" element={<Admin />} />
+                     <Route
+                        path="/newWasteRecord"
+                        element={<NewWasteRecord />}
+                     />
+                     <Route
+                        path="/newCenterRecord"
+                        element={<NewCenterRecord />}
+                     />
                      <Route
                         path="/profile"
                         element={<Profile handleLogOut={handleLogOut} />}
@@ -149,7 +202,7 @@ function Container() {
                   <div className="flex justify-between mb-3 items-center">
                      <h1 className="text-xl font-bold">Giriş Yap</h1>
                      <button onClick={() => setModalLogInControl(false)}>
-                        <i class="fa-solid fa-xmark"></i>
+                        <i className="fa-solid fa-xmark"></i>
                      </button>
                   </div>
                   <form
@@ -182,7 +235,7 @@ function Container() {
                   <div className="flex justify-between mb-3 items-center">
                      <h1 className="text-xl font-bold">Kayıt Ol</h1>
                      <button onClick={() => setModalSignUpControl(false)}>
-                        <i class="fa-solid fa-xmark"></i>
+                        <i className="fa-solid fa-xmark"></i>
                      </button>
                   </div>
                   <form
@@ -223,6 +276,21 @@ function Container() {
                      </button>
                   </form>
                </div>
+            </div>
+
+            <div>
+               <button onClick={notify}>Notify!</button>
+               <ToastContainer
+                  position="bottom-right"
+                  autoClose={5000}
+                  hideProgressBar={false}
+                  newestOnTop={false}
+                  closeOnClick
+                  rtl={false}
+                  pauseOnFocusLoss
+                  draggable
+                  pauseOnHover
+               />
             </div>
          </div>
       </Router>

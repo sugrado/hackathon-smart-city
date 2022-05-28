@@ -541,12 +541,12 @@ Ensure the default browser behavior of the `hidden` attribute.
   z-index: 10;
 }
 
-.col-span-4{
-  grid-column: span 4 / span 4;
-}
-
 .col-span-8{
   grid-column: span 8 / span 8;
+}
+
+.col-span-4{
+  grid-column: span 4 / span 4;
 }
 
 .m-auto{
@@ -568,20 +568,29 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-bottom: 0.25rem;
 }
 
-.mt-7{
-  margin-top: 1.75rem;
+.my-3{
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
 }
 
-.mb-3{
-  margin-bottom: 0.75rem;
+.mt-5{
+  margin-top: 1.25rem;
 }
 
 .mb-2{
   margin-bottom: 0.5rem;
 }
 
-.mt-5{
-  margin-top: 1.25rem;
+.mt-4{
+  margin-top: 1rem;
+}
+
+.mt-7{
+  margin-top: 1.75rem;
+}
+
+.mb-3{
+  margin-bottom: 0.75rem;
 }
 
 .mr-5{
@@ -594,10 +603,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .mb-1{
   margin-bottom: 0.25rem;
-}
-
-.mt-4{
-  margin-top: 1rem;
 }
 
 .ml-2{
@@ -644,6 +649,14 @@ Ensure the default browser behavior of the `hidden` attribute.
   min-height: 100vh;
 }
 
+.w-3\/4{
+  width: 75%;
+}
+
+.w-full{
+  width: 100%;
+}
+
 .w-10\/12{
   width: 83.333333%;
 }
@@ -652,28 +665,12 @@ Ensure the default browser behavior of the `hidden` attribute.
   width: 50%;
 }
 
-.w-full{
-  width: 100%;
-}
-
 .w-60{
   width: 15rem;
 }
 
 .w-1\/3{
   width: 33.333333%;
-}
-
-.w-2\/4{
-  width: 50%;
-}
-
-.w-3\/4{
-  width: 75%;
-}
-
-.w-4\/5{
-  width: 80%;
 }
 
 .cursor-pointer{
@@ -741,10 +738,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   border-right-width: 1px;
 }
 
-.border-l-2{
-  border-left-width: 2px;
-}
-
 .border-black{
   --tw-border-opacity: 1;
   border-color: rgb(0 0 0 / var(--tw-border-opacity));
@@ -758,6 +751,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 .border-gray-200{
   --tw-border-opacity: 1;
   border-color: rgb(229 231 235 / var(--tw-border-opacity));
+}
+
+.bg-gray-50{
+  --tw-bg-opacity: 1;
+  background-color: rgb(249 250 251 / var(--tw-bg-opacity));
 }
 
 .bg-buyuksehir{
@@ -785,23 +783,56 @@ Ensure the default browser behavior of the `hidden` attribute.
   background-color: rgb(220 20 60 / var(--tw-bg-opacity));
 }
 
-.bg-gray-50{
+.bg-black{
   --tw-bg-opacity: 1;
-  background-color: rgb(249 250 251 / var(--tw-bg-opacity));
+  background-color: rgb(0 0 0 / var(--tw-bg-opacity));
+}
+
+.bg-gray-800{
+  --tw-bg-opacity: 1;
+  background-color: rgb(31 41 55 / var(--tw-bg-opacity));
+}
+
+.bg-gray-700{
+  --tw-bg-opacity: 1;
+  background-color: rgb(55 65 81 / var(--tw-bg-opacity));
+}
+
+.bg-gray-600{
+  --tw-bg-opacity: 1;
+  background-color: rgb(75 85 99 / var(--tw-bg-opacity));
+}
+
+.bg-gray-500{
+  --tw-bg-opacity: 1;
+  background-color: rgb(107 114 128 / var(--tw-bg-opacity));
+}
+
+.bg-opacity-25{
+  --tw-bg-opacity: 0.25;
+}
+
+.bg-opacity-50{
+  --tw-bg-opacity: 0.5;
 }
 
 .object-cover{
   object-fit: cover;
 }
 
-.py-5{
-  padding-top: 1.25rem;
-  padding-bottom: 1.25rem;
+.py-1{
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
 }
 
 .px-3{
   padding-left: 0.75rem;
   padding-right: 0.75rem;
+}
+
+.py-5{
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
 }
 
 .px-2{
@@ -824,11 +855,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   padding-right: 1.25rem;
 }
 
-.py-1{
-  padding-top: 0.25rem;
-  padding-bottom: 0.25rem;
-}
-
 .px-10{
   padding-left: 2.5rem;
   padding-right: 2.5rem;
@@ -842,6 +868,31 @@ Ensure the default browser behavior of the `hidden` attribute.
 .py-10{
   padding-top: 2.5rem;
   padding-bottom: 2.5rem;
+}
+
+.py-0\.5{
+  padding-top: 0.125rem;
+  padding-bottom: 0.125rem;
+}
+
+.py-0{
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+.py-px{
+  padding-top: 1px;
+  padding-bottom: 1px;
+}
+
+.py-\[0\.5px\]{
+  padding-top: 0.5px;
+  padding-bottom: 0.5px;
+}
+
+.py-\[0\.2px\]{
+  padding-top: 0.2px;
+  padding-bottom: 0.2px;
 }
 
 .pb-2{
@@ -862,11 +913,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .font-poppins{
   font-family: Poppins, sans-serif;
-}
-
-.text-3xl{
-  font-size: 1.875rem;
-  line-height: 2.25rem;
 }
 
 .text-2xl{
