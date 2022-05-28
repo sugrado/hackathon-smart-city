@@ -20,3 +20,49 @@
 .profile-btn {
    border: 1px solid red;
 }
+
+.profile-icon {
+   text-align: center;
+   margin: auto;
+   width: 320px;
+   height: 320px;
+}
+
+.score-container {
+   width: 80%;
+   margin: auto;
+   display: flex;
+   justify-content: space-between;
+   border-radius: 10px;
+   border: 1px solid rgba(0, 0, 0, 0.2);
+   transition: all 0.1s;
+   margin-bottom: 20px;
+}
+
+.score-container:hover {
+   box-shadow: 1px 0px 10px 3px rgba(0, 0, 0, 0.1);
+}
+
+.score-inner {
+   padding: 20px;
+}
+.score-image {
+   width: 100%;
+   height: 100%;
+}
+.image {
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
+   border-bottom-right-radius: 10px;
+   border-top-right-radius: 10px;
+}
+.score-left {
+   width: 70%;
+   display: flex;
+   align-items: center;
+}
+.score-right {
+   width: 30%;
+   height: 200px;
+}
