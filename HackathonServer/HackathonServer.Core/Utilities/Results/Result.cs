@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace HackathonServer.Core.Utilities.Results
+﻿namespace HackathonServer.Core.Utilities.Results
 {
     public class Result : IResult
     {
@@ -21,4 +17,3 @@ namespace HackathonServer.Core.Utilities.Results
         public string Message { get; }
     }
 }
-    

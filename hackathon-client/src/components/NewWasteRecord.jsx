@@ -1,15 +1,13 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function NewWasteRecord() {
   const [identityNumber, setIdentityNumber] = useState("");
   const [unitSize, setUnitSize] = useState("");
-  const [weight, setWeight] = useState("");
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
-  const [citizens, setCitizens] = useState([]);
   const [wasteCenters, setWasteCenters] = useState([]);
   var object = {};
   useEffect(() => {
