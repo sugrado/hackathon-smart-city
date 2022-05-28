@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
 function NewCenterRecord() {
-  const [centerName, setCenterName] = useState("");
   const [mail, setMail] = useState("");
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
@@ -23,7 +22,6 @@ function NewCenterRecord() {
     e.preventDefault();
     object.neighbourhoodId = getSelectedValue("neighbourhoodId");
     object.address = address;
-    object.name = centerName;
     object.email = mail;
     object.phoneNumber = phone;
     object.capacity = capacity;
@@ -54,14 +52,6 @@ function NewCenterRecord() {
 
       <form onSubmit={(e) => handleCenterRecord(e)}>
         <div className="w-1/2 m-auto mt-5 flex flex-col">
-          <input
-            type="text"
-            value={centerName}
-            onChange={(e) => setCenterName(e.target.value)}
-            placeholder="Atık Merkezi Adı"
-            className="w-full outline-none py-1 px-3 border-2 rounded mb-2"
-          />
-
           <input
             type="text"
             value={mail}

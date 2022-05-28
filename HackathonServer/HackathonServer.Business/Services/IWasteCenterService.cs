@@ -23,10 +23,18 @@ namespace HackathonServer.Business.Services
 
         public async Task<IDataResult<WasteCenter>> AddWasteCenter(AddWasteCenterDto addWasteCenterDto)
         {
+            var neighbourhoodName = await _context
+                .Neighbourhoods
+                .AsNoTracking()
+                .Where(p => !p.Deleted &&
+                            p.Id == addWasteCenterDto.NeighbourhoodId)
+                .Select(p => p.Name)
+                .FirstOrDefaultAsync();
+
             var result = await Create(new WasteCenter
             {
                 Email = addWasteCenterDto.Email,
-                Name = addWasteCenterDto.Name,
+                Name = neighbourhoodName + " Atık Merkezi",
                 Address = addWasteCenterDto.Address,
                 Capacity = addWasteCenterDto.Capacity,
                 NeighbourhoodId = addWasteCenterDto.NeighbourhoodId,
