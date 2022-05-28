@@ -37,13 +37,14 @@ function NewWasteRecord() {
   }
 
   const handleNewWasteRecord = () => {
-    toast.success("Atıkların kaydı yapıldı.");
     axios
       .post(
         "https://6f2d-46-154-111-77.eu.ngrok.io/api/wasteRecords/bulkInsert",
         products
       )
-      .then((res) => {});
+      .then((res) => {
+        toast.success(res.data.message);
+      });
   };
 
   return (

@@ -41,7 +41,6 @@ namespace HackathonServer.Business.Services
 
             var wasteCenter = await _context
                 .WasteCenters
-                .AsNoTracking()
                 .Where(p => p.Id == addWasteRecordDto.WasteCenterId)
                 .FirstOrDefaultAsync();
 
@@ -92,7 +91,7 @@ namespace HackathonServer.Business.Services
                 await AddWasteRecord(addWasteRecordDto);
             }
 
-            return new SuccessResult();
+            return new SuccessResult("Atıklar kaydedildi.");
         }
     }
 }
