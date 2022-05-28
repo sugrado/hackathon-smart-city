@@ -4,7 +4,7 @@ import {
   Route,
   NavLink,
 } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Home from "./Home";
 import News from "./News";
 import Centers from "./Centers";
@@ -19,8 +19,6 @@ import { toast } from "react-toastify";
 import axios from "axios";
 
 function Container() {
-  const notify = () => toast.error("Kullanıcı Adı veya Şifre hatalı");
-
   const [signUppassword, setSignUpPassword] = useState("");
   const [logInPassword, setLogInPassword] = useState("");
   const [signUpEmail, setSignUpEmail] = useState("");
@@ -29,12 +27,23 @@ function Container() {
   const [surname, setSurname] = useState("");
   const [identityNumber, setIdentityNumber] = useState("");
   const [userFullName, setUserFullName] = useState("");
-
   const [modalLogInControl, setModalLogInControl] = useState(false);
   const [modalSignUpControl, setModalSignUpControl] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
   const [menuControl, setMenuControl] = useState(false);
+
+  useEffect(() => {
+    if (
+      !!localStorage.getItem("userIdentity") &&
+      !!localStorage.getItem("userFullName")
+    ) {
+      setUserFullName(localStorage.getItem("userFullName"));
+      setIsAuthenticated(true);
+    } else {
+      setIsAuthenticated(false);
+    }
+  }, []);
 
   const handleLogInSubmit = (e) => {
     e.preventDefault();
@@ -50,6 +59,7 @@ function Container() {
           toast.success(res.data.message);
           setUserFullName(res.data.data.fullName);
           localStorage.setItem("userIdentity", res.data.data.identityNumber);
+          localStorage.setItem("userFullName", res.data.data.fullName);
         },
         (err) => {
           toast.error(err.response.data.message);
@@ -81,6 +91,7 @@ function Container() {
 
   const handleLogOut = () => {
     localStorage.removeItem("userIdentity");
+    localStorage.removeItem("userFullName");
     setIsAuthenticated(false);
     setMenuControl(false);
     setIsAdmin(false);
