@@ -9,8 +9,8 @@ namespace HackathonServer.Entity.Concrete
         public string Address { get; set; }
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
-        public int Capacity { get; set; }
-        public int UsedCapacity { get; set; }
+        public double Capacity { get; set; }
+        public double UsedCapacity { get; set; }
         public short PercentageOfCapacity { get; set; }
         public Neighbourhood Neighbourhood { get; set; }
     }

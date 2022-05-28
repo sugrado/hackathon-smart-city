@@ -3,6 +3,7 @@ using System;
 using HackathonServer.DataAccess.Concrete;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace HackathonServer.DataAccess.Migrations
 {
     [DbContext(typeof(HackathonServerDbContext))]
-    partial class HackathonServerDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220528120958_mig_9")]
+    partial class mig_9
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -232,15 +234,13 @@ namespace HackathonServer.DataAccess.Migrations
                     b.Property<DateTime?>("ModifiedAt")
                         .HasColumnType("timestamp without time zone");
 
-                    b.Property<double>("UnitSize")
-                        .HasColumnType("double precision");
+                    b.Property<short>("UnitSize")
+                        .HasColumnType("smallint");
 
                     b.Property<int>("WasteCenterId")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CategoryId");
 
                     b.HasIndex("CitizenId");
 
@@ -273,12 +273,6 @@ namespace HackathonServer.DataAccess.Migrations
 
             modelBuilder.Entity("HackathonServer.Entity.Concrete.WasteRecord", b =>
                 {
-                    b.HasOne("HackathonServer.Entity.Concrete.Category", "Category")
-                        .WithMany()
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("HackathonServer.Entity.Concrete.User", "Citizen")
                         .WithMany()
                         .HasForeignKey("CitizenId")
@@ -290,8 +284,6 @@ namespace HackathonServer.DataAccess.Migrations
                         .HasForeignKey("WasteCenterId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Category");
 
                     b.Navigation("Citizen");
 
