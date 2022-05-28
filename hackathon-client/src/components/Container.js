@@ -129,7 +129,7 @@ function Container() {
                         }
                      >
                         {userFullName}
-                        <i class="fa-solid fa-caret-down ml-3"></i>
+                        <i className="fa-solid fa-caret-down ml-3"></i>
                      </div>
 
                      {menuControl && (
