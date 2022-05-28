@@ -1,0 +1,22 @@
+.panel-container {
+   display: flex;
+   justify-content: space-between;
+}
+.left-panel {
+   width: 65%;
+}
+.right-panel {
+   width: 30%;
+   border: 1px solid rgba(0, 0, 0, 0.2);
+   min-height: 300px;
+   padding: 10px;
+   font-size: 12px;
+   font-weight: bold;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+}
+
+.profile-btn {
+   border: 1px solid red;
+}

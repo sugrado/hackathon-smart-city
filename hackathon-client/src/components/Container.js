@@ -12,6 +12,8 @@ import Leadership from "./Leadership";
 import Center from "./Center";
 import Profile from "./Profile";
 import NewWasteRecord from "./NewWasteRecord";
+import logo from "../assets/atıklogo-01.png";
+import belediye from "../assets/belediye.jpg";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -85,7 +87,14 @@ function Container() {
       <Router>
          <div className="font-poppins">
             <nav className="flex justify-between h-14 text-black bg-buyuksehir  items-center px-10 border-b-[1px] border-gray-300">
-               <div className="logo">Logo</div>
+               <div className="flex items-center">
+                  <img
+                     className="w-10 h-10 border-[1px] border-black mr-2"
+                     src={belediye}
+                  />
+                  <img className="w-10 h-10" src={logo} alt="resim" />
+                  <p className="ml-5 text-2xl font-bold">Atık Kazanç Sistemi</p>
+               </div>
                {isAuthenticated ? (
                   <div className="group relative text-white">
                      <div
@@ -279,7 +288,6 @@ function Container() {
             </div>
 
             <div>
-               <button onClick={notify}>Notify!</button>
                <ToastContainer
                   position="bottom-right"
                   autoClose={5000}

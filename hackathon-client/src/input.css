@@ -21,4 +21,10 @@
    .modal.active {
       @apply visible;
    }
+   .leadership-first {
+      @apply transition-all shadow-sm hover:shadow-center bg-buyuksehir hover:bg-yellow-300 text-black   py-3 px-5 flex justify-between mb-3 transition-all;
+   }
+   .leadership-item {
+      @apply transition-all shadow-sm hover:shadow-center bg-lacivert text-white hover:bg-gray-800   py-3 px-5 flex justify-between mb-3 transition-all;
+   }
 }

@@ -51,7 +51,7 @@ function Center() {
                            key={user.id}
                            className=" transition-all shadow-sm hover:shadow-center hover:bg-lacivert hover:text-white py-2 px-2  flex justify-between mb-2"
                         >
-                           <h1> {`${index + 1} ) ${user.name} `}</h1>
+                           <h1> {`${index + 1} ) ${user.fullName} `}</h1>
                            <p>Geri Dönüştürme Puanı : {user.score}</p>
                         </div>
                      ))}

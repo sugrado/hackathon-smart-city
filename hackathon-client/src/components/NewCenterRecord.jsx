@@ -18,7 +18,7 @@ function NewCenterRecord() {
          <div className="text-2xl font-bold text-center">Atık Merkezi Ekle</div>
 
          <form onSubmit={(e) => handleCenterRecord(e)}>
-            <div className="w-3/4 m-auto mt-5 flex flex-col">
+            <div className="w-1/2 m-auto mt-5 flex flex-col">
                <input
                   type="text"
                   value={centerName}

@@ -47,7 +47,7 @@ function Profile({ handleLogOut }) {
          <div className="text-center mt-5">
             <NavLink to="/">
                <button
-                  className="py-2 px-3 bg-white text-red-500 text-sm border-red-500 border-4 hover:bg-red-600 hover:text-white transition-all rounded-md"
+                  className="py-2 px-3 bg-white text-red-500 text-sm border-red-500 border-4 hover:bg-red-600 hover:text-white transition-all rounded-md profile-btn"
                   onClick={() => handleLogOut()}
                >
                   Çıkış Yap
