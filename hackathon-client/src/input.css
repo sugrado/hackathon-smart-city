@@ -1,3 +1,24 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600&display=swap");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+   .btn {
+      @apply py-2 px-4 bg-lacivert text-white ml-4 rounded text-sm;
+   }
+   .navlink {
+      @apply hover:bg-gray-200 py-1 px-2 rounded my-1;
+   }
+   .navlink.active {
+      @apply bg-lacivert text-white;
+   }
+   .modal {
+      @apply w-full h-full absolute top-0 left-0 bg-black bg-opacity-60 flex justify-center items-center invisible;
+   }
+   .modal.active {
+      @apply visible;
+   }
+}
