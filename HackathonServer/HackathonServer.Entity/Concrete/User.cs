@@ -1,4 +1,5 @@
 ﻿using HackathonServer.Core.Entities.Common;
+using System.Text.Json.Serialization;
 
 namespace HackathonServer.Entity.Concrete
 {
@@ -21,6 +22,7 @@ namespace HackathonServer.Entity.Concrete
         /// <summary>
         /// Shit code
         /// </summary>
+        [JsonIgnore]
         public string Password { get; set; }
     }
 }

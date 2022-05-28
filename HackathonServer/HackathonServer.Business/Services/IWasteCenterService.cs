@@ -4,7 +4,6 @@ using HackathonServer.DataAccess.Concrete;
 using HackathonServer.Entity.Concrete;
 using HackathonServer.Entity.Dto;
 using Microsoft.EntityFrameworkCore;
-using System.Linq;
 
 namespace HackathonServer.Business.Services
 {
