@@ -10,6 +10,7 @@ namespace HackathonServer.Business.Services
         Task<IDataResult<User>> GetByMail(string email);
         Task<IDataResult<User>> GetByIdentityNumber(string identityNumber);
         Task<IDataResult<User>> Create(User user);
+        Task<IDataResult<List<User>>> SortByScore();
     }
 
     public class UserService : IUserService
@@ -20,6 +21,10 @@ namespace HackathonServer.Business.Services
         {
             _context = context;
         }
+
+        public async Task<IDataResult<List<User>>> SortByScore()
+            => new SuccessDataResult<List<User>>(
+                await _context.Users.OrderByDescending(p => p.Score).ToListAsync(), "Başarılı");
 
         public async Task<IDataResult<User>> Create(User user)
         {
