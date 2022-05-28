@@ -28,5 +28,14 @@ namespace HackathonServer.WebAPI.Controllers
                 return Ok(result);
             return BadRequest(result);
         }
+
+        [HttpPost("bulkInsert")]
+        public async Task<IActionResult> BulkInsert([FromBody]List<AddWasteRecordDto> addWasteRecordDtos)
+        {
+            var result = await _service.BulkInsert(addWasteRecordDtos);
+            if (result.Success)
+                return Ok(result);
+            return BadRequest(result);
+        }
     }
 }

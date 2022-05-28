@@ -10,6 +10,7 @@ namespace HackathonServer.Business.Services
     public interface IWasteRecordService : IEntityRepository<WasteRecord>
     {
         Task<IDataResult<WasteRecord>> AddWasteRecord(AddWasteRecordDto addWasteRecordDto);
+        Task<IResult> BulkInsert(List<AddWasteRecordDto> addWasteRecordDtos);
     }
 
     public class WasteRecordService : EfRepositoryBase<WasteRecord>, IWasteRecordService
@@ -74,7 +75,24 @@ namespace HackathonServer.Business.Services
             _context.WasteCenters.Update(wasteCenter);
             await _context.SaveChangesAsync();
 
-            return new ErrorDataResult<WasteRecord>("Kayıt başarıyla eklendi.");
+            return new SuccessDataResult<WasteRecord>("Kayıt başarıyla eklendi.");
+        }
+
+        public async Task<IResult> BulkInsert(List<AddWasteRecordDto> addWasteRecordDtos)
+        {
+            foreach (var addWasteRecordDto in addWasteRecordDtos)
+            {
+                if (addWasteRecordDto.CategoryId == default ||
+                    addWasteRecordDto.WasteCenterId == default ||
+                    addWasteRecordDto.CitizenIdentityNumber == default ||
+                    addWasteRecordDto.UnitSize == default)
+                {
+                    continue;
+                }
+                await AddWasteRecord(addWasteRecordDto);
+            }
+
+            return new SuccessResult();
         }
     }
 }

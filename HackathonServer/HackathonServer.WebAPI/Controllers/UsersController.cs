@@ -19,5 +19,9 @@ namespace HackathonServer.WebAPI.Controllers
 
         [HttpGet]
         public async Task<IActionResult> SortByScore() => Ok(await _service.SortByScore());
+
+        [HttpGet("{identityNumber}")]
+        public async Task<IActionResult> GetById([FromRoute] string identityNumber)
+            => Ok(await _service.GetByIdentityNumber(identityNumber));
     }
 }

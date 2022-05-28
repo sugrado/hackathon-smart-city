@@ -39,7 +39,6 @@ namespace HackathonServer.Business.Services
         {
             var user = await _context
                 .Users
-                .AsNoTracking()
                 .Where(p => !p.Deleted &&
                             p.IdentityNumber == identityNumber)
                 .FirstOrDefaultAsync();
