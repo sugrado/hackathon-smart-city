@@ -39,6 +39,7 @@ function Container() {
       !!localStorage.getItem("userFullName")
     ) {
       setUserFullName(localStorage.getItem("userFullName"));
+      setIsAdmin(localStorage.getItem("userRole") == 2);
       setIsAuthenticated(true);
     } else {
       setIsAuthenticated(false);
@@ -58,8 +59,10 @@ function Container() {
           setModalLogInControl(false);
           toast.success(res.data.message);
           setUserFullName(res.data.data.fullName);
+          setIsAdmin(res.data.data.typeId === 2);
           localStorage.setItem("userIdentity", res.data.data.identityNumber);
           localStorage.setItem("userFullName", res.data.data.fullName);
+          localStorage.setItem("userRole", res.data.data.typeId);
         },
         (err) => {
           toast.error(err.response.data.message);
@@ -92,6 +95,7 @@ function Container() {
   const handleLogOut = () => {
     localStorage.removeItem("userIdentity");
     localStorage.removeItem("userFullName");
+    localStorage.removeItem("userRole");
     setIsAuthenticated(false);
     setMenuControl(false);
     setIsAdmin(false);
