@@ -1,4 +1,7 @@
+using FluentValidation.AspNetCore;
 using HackathonServer.Business.DependencyResolvers;
+using HackathonServer.Business.Validations;
+using HackathonServer.Core.Utilities.Extensions;
 using HackathonServer.DataAccess.Concrete;
 using Microsoft.EntityFrameworkCore;
 
@@ -16,6 +19,11 @@ builder.Services.AddDbContext<HackathonServerDbContext>(o =>
 });
 builder.Services.AddScoped<HackathonServerDbContext>();
 builder.Services.AddServiceRegistrations();
+builder.Services.AddFluentValidation(opt =>
+{
+    opt.RegisterValidatorsFromAssemblyContaining<AddNeighbourhoodValidator>();
+});
+builder.Services.UseCustomValidationResponse();
 
 var app = builder.Build();
 
