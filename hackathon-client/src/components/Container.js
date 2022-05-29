@@ -50,7 +50,7 @@ function Container() {
    const handleLogInSubmit = (e) => {
       e.preventDefault();
       axios
-         .post("https://6f2d-46-154-111-77.eu.ngrok.io/api/auth/login", {
+         .post("https://608e-178-241-52-165.eu.ngrok.io/api/auth/login", {
             email: logInEmail,
             password: logInPassword,
          })
@@ -79,7 +79,7 @@ function Container() {
    const handleSignUpSubmit = (e) => {
       e.preventDefault();
       axios
-         .post("https://6f2d-46-154-111-77.eu.ngrok.io/api/auth/register", {
+         .post("https://608e-178-241-52-165.eu.ngrok.io/api/auth/register", {
             email: signUpEmail,
             password: signUppassword,
             firstName: name,

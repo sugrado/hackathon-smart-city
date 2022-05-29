@@ -10,7 +10,7 @@ function Center() {
    useEffect(() => {
       axios
          .get(
-            `https://6f2d-46-154-111-77.eu.ngrok.io/api/WasteCenters/getWithRecords/${id}`
+            `https://608e-178-241-52-165.eu.ngrok.io/api/WasteCenters/getWithRecords/${id}`
          )
          .then(({ data: newCenter }) => {
             setCenter(newCenter.data.wasteCenter);

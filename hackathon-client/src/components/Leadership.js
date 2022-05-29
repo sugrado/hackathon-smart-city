@@ -6,7 +6,7 @@ function Leadership() {
 
    useEffect(() => {
       axios
-         .get("https://6f2d-46-154-111-77.eu.ngrok.io/api/Users")
+         .get("https://608e-178-241-52-165.eu.ngrok.io/api/Users")
          .then(({ data: newUsers }) => {
             setUsers(newUsers.data);
          });

@@ -48,7 +48,7 @@ namespace HackathonServer.WebAPI.Controllers.Common
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var result = await _service.GetAll();
+            var result = await _service.GetAll(p => !p.Deleted);
             if (result.Success)
                 return Ok(result);
             return BadRequest(result);

@@ -12,10 +12,10 @@ function NewWasteRecord() {
   var object = {};
   useEffect(() => {
     axios
-      .get("https://6f2d-46-154-111-77.eu.ngrok.io/api/categories")
+      .get("https://608e-178-241-52-165.eu.ngrok.io/api/categories")
       .then(({ data: response }) => setCategories(response.data));
     axios
-      .get("https://6f2d-46-154-111-77.eu.ngrok.io/api/wasteCenters")
+      .get("https://608e-178-241-52-165.eu.ngrok.io/api/wasteCenters")
       .then(({ data: response }) => setWasteCenters(response.data));
   }, []);
 
@@ -37,7 +37,7 @@ function NewWasteRecord() {
   const handleNewWasteRecord = () => {
     axios
       .post(
-        "https://6f2d-46-154-111-77.eu.ngrok.io/api/wasteRecords/bulkInsert",
+        "https://608e-178-241-52-165.eu.ngrok.io/api/wasteRecords/bulkInsert",
         products
       )
       .then(

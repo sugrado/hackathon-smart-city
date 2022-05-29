@@ -7,11 +7,11 @@ function NewCenterRecord() {
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
   const [neighbourhoods, setNeighbourhoods] = useState([]);
-  const [capacity, setCapacity] = useState(0);
+  const [capacity, setCapacity] = useState("");
 
   useEffect(() => {
     axios
-      .get("https://6f2d-46-154-111-77.eu.ngrok.io/api/neighbourhoods")
+      .get("https://608e-178-241-52-165.eu.ngrok.io/api/neighbourhoods")
       .then((res) => {
         setNeighbourhoods(res.data.data);
       });
@@ -24,10 +24,10 @@ function NewCenterRecord() {
     object.address = address;
     object.email = mail;
     object.phoneNumber = phone;
-    object.capacity = capacity;
+    object.capacity = Number(capacity);
     axios
       .post(
-        "https://6f2d-46-154-111-77.eu.ngrok.io/api/wasteCenters/addWasteCenter",
+        "https://608e-178-241-52-165.eu.ngrok.io/api/wasteCenters/addWasteCenter",
         object
       )
       .then(
@@ -61,7 +61,7 @@ function NewCenterRecord() {
           />
 
           <input
-            type="number"
+            type="text"
             value={capacity}
             onChange={(e) => setCapacity(e.target.value)}
             placeholder="Kapasite"
