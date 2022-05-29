@@ -24,7 +24,7 @@ namespace HackathonServer.Business.Services
 
         public async Task<IDataResult<List<User>>> SortByScore()
             => new SuccessDataResult<List<User>>(
-                await _context.Users.OrderByDescending(p => p.Score).ToListAsync(), "Başarılı");
+                await _context.Users.Where(p => !p.Deleted).OrderByDescending(p => p.Score).ToListAsync(), "Başarılı");
 
         public async Task<IDataResult<User>> Create(User user)
         {
