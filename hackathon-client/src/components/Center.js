@@ -57,20 +57,14 @@ function Center() {
                      ))}
                   </div>
                </div>
-               <div>
-                  {/* <div
-                     id="map-container-google-1"
-                     className="w-10/12 h-96 m-auto"
-                  >
-                     <iframe
-                        src="https://maps.google.com/maps?q=selcuklu&t=&z=13&ie=UTF8&iwloc=&output=embed"
-                        frameBorder="0"
-                        allowFullScreen
-                        className="w-full h-full"
-                     ></iframe>
-                  </div> */}
+               <div className="w-10/12 h-96 m-auto my-10">
+                  <iframe
+                     src="https://maps.google.com/maps?q=selcuklu&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                     className="w-full h-full"
+                  ></iframe>
                </div>
-               <div className="mt-5">
+
+               <div className="mt-10">
                   <div className="flex bg-lacivert py-4  px-5 items-center w-10/12 m-auto">
                      <i className="fa-solid fa-location-dot mr-5 text-buyuksehir"></i>
                      <div className="flex flex-col">

@@ -34,7 +34,7 @@ function Home() {
                   planlamasında devlet harcamalarının ve vatandaş kazancının
                   verimliliğini artırmak ve dengeli fayda sağlamak. <br />
                   <br />
-                  <strong>Vziyon</strong> <br /> Atığının bilincinde bir konya,
+                  <strong>Vizyon</strong> <br /> Atığının bilincinde bir konya,
                   Akıllı bir şehir yaratmayı planlıyoruz - dijital
                   teknolojilerin şehirdeki yaşam standartlarını, performansı ve
                   hizmet sunumunu, rekabet gücünü artırdığı ve ekonomi, sosyal
