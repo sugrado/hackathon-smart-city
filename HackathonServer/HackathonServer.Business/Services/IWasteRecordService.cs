@@ -11,6 +11,7 @@ namespace HackathonServer.Business.Services
     {
         Task<IDataResult<WasteRecord>> AddWasteRecord(AddWasteRecordDto addWasteRecordDto);
         Task<IResult> BulkInsert(List<AddWasteRecordDto> addWasteRecordDtos);
+        Task<IDataResult<List<CategoryStatisticsDto>>> GetUserCategoryStatistics(string identityNumber);
     }
 
     public class WasteRecordService : EfRepositoryBase<WasteRecord>, IWasteRecordService
@@ -88,10 +89,48 @@ namespace HackathonServer.Business.Services
                 {
                     continue;
                 }
-                await AddWasteRecord(addWasteRecordDto);
+                var result = await AddWasteRecord(addWasteRecordDto);
+                if (!result.Success)
+                    return new ErrorResult(result.Message);
             }
 
             return new SuccessResult("Atıklar kaydedildi.");
+        }
+
+        public async Task<IDataResult<List<CategoryStatisticsDto>>> GetUserCategoryStatistics(string identityNumber)
+        {
+            var userId = await _context
+                .Users
+                .AsNoTracking()
+                .Where(u => u.IdentityNumber == identityNumber)
+                .Select(p => p.Id)
+                .FirstOrDefaultAsync();
+
+            if (userId == default)
+                return new ErrorDataResult<List<CategoryStatisticsDto>>("Kullanıcı bilgisine ulaşılamadı");
+
+            var categories = await _context
+                .Categories
+                .Where(p => !p.Deleted)
+                .Select(p => new { p.Id, p.Name })
+                .ToListAsync();
+
+            var results = new List<CategoryStatisticsDto>();
+
+            foreach (var category in categories)
+            {
+                var categorySum = await _context
+                .WasteRecords
+                .Where(p => !p.Deleted &&
+                            p.CitizenId == userId &&
+                            p.CategoryId == category.Id)
+                .Select(p => p.UnitSize)
+                .SumAsync();
+
+                results.Add(new CategoryStatisticsDto { CategoryName = category.Name, Quantity = categorySum });
+            }
+
+            return new SuccessDataResult<List<CategoryStatisticsDto>>(results, "Başarılı");
         }
     }
 }

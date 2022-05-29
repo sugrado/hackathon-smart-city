@@ -37,5 +37,15 @@ namespace HackathonServer.WebAPI.Controllers
                 return Ok(result);
             return BadRequest(result);
         }
+
+        [HttpGet("GetUserCategoryStatistics/{identityNumber}")]
+        public async Task<IActionResult> GetUserCategoryStatistics([FromRoute] string identityNumber)
+        {
+            var result = await _service.GetUserCategoryStatistics(identityNumber);
+            if (result.Success)
+                return Ok(result);
+            return BadRequest(result);
+        }
+
     }
 }
