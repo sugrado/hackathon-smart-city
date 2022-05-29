@@ -2,9 +2,16 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import yildiz from "../assets/yıldız 55-01 (1).png";
+import cam from "../assets/cam-01.png";
+import kagit from "../assets/kagıt-01.png";
+import kompost from "../assets/kompost-01.png";
+import metal from "../assets/metal-01.png";
+import plastik from "../assets/metal-01.png";
+import ahsap from "../assets/ahsap-01.png";
 
 function Profile({ handleLogOut }) {
    const [user, setUser] = useState({});
+   const [wastes, setWastes] = useState([]);
    useEffect(() => {
       axios
          .get(
@@ -15,6 +22,14 @@ function Profile({ handleLogOut }) {
          .then((res) => {
             setUser(res.data.data);
          });
+
+      axios
+         .get(
+            `https://6f2d-46-154-111-77.eu.ngrok.io/api/WasteRecords/GetUserCategoryStatistics/${localStorage.getItem(
+               "userIdentity"
+            )}`
+         )
+         .then((res) => setWastes(res.data.data));
    }, []);
    return (
       <div>
@@ -38,23 +53,118 @@ function Profile({ handleLogOut }) {
             </div>
          </div>
 
+         <div className="flex profile-wastes flex-wrap">
+            <div className="w-1/3 pr-4 pb-4">
+               <div className=" w-full h-full shadow-md flex flex-col ">
+                  <div className="flex flex-col text-center pb-2 mt-5 px-2 text-xl font-bold">
+                     <span>Kağıt</span>
+                     <span>
+                        Toplam Atık Miktarı : {wastes && wastes[0]?.quantity} kg
+                     </span>
+                  </div>
+                  <div className="w-full h-3/4">
+                     <img
+                        src={kagit}
+                        alt="resim"
+                        className="object-cover w-full h-full rounded-t-md"
+                     />
+                  </div>
+               </div>
+            </div>
+            <div className="w-1/3 pr-4 pb-4">
+               <div className=" w-full h-full shadow-md flex flex-col ">
+                  <div className="flex flex-col text-center pb-2 mt-5 px-2 text-xl font-bold">
+                     <span>Cam</span>
+                     <span>
+                        Toplam Atık Miktarı : {wastes && wastes[1]?.quantity} kg
+                     </span>
+                  </div>
+                  <div className="w-full h-3/4">
+                     <img
+                        src={cam}
+                        alt="resim"
+                        className="object-cover w-full h-full rounded-t-md"
+                     />
+                  </div>
+               </div>
+            </div>
+            <div className="w-1/3 pr-4 pb-4">
+               <div className=" w-full h-full shadow-md flex flex-col ">
+                  <div className="flex flex-col text-center pb-2 mt-5 px-2 text-xl font-bold">
+                     <span>Metal</span>
+                     <span>
+                        Toplam Atık Miktarı : {wastes && wastes[2]?.quantity} kg
+                     </span>
+                  </div>
+                  <div className="w-full h-3/4">
+                     <img
+                        src={metal}
+                        alt="resim"
+                        className="object-cover w-full h-full rounded-t-md"
+                     />
+                  </div>
+               </div>
+            </div>
+            <div className="w-1/3 pr-4 pb-4">
+               <div className=" w-full h-full shadow-md flex flex-col ">
+                  <div className="flex flex-col text-center pb-2 mt-5 px-2 text-xl font-bold">
+                     <span>Kompost</span>
+                     <span>
+                        Toplam Atık Miktarı : {wastes && wastes[3]?.quantity} kg
+                     </span>
+                  </div>
+                  <div className="w-full h-3/4">
+                     <img
+                        src={kompost}
+                        alt="resim"
+                        className="object-cover w-full h-full rounded-t-md"
+                     />
+                  </div>
+               </div>
+            </div>
+            <div className="w-1/3 pr-4 pb-4">
+               <div className=" w-full h-full shadow-md flex flex-col ">
+                  <div className="flex flex-col text-center pb-2 mt-5 px-2 text-xl font-bold">
+                     <span>Plastik</span>
+                     <span>
+                        Toplam Atık Miktarı : {wastes && wastes[4]?.quantity} kg
+                     </span>
+                  </div>
+                  <div className="w-full h-3/4">
+                     <img
+                        src={plastik}
+                        alt="resim"
+                        className="object-cover w-full h-full rounded-t-md"
+                     />
+                  </div>
+               </div>
+            </div>
+            <div className="w-1/3 pr-4 pb-4">
+               <div className=" w-full h-full shadow-md flex flex-col ">
+                  <div className="flex flex-col text-center pb-2 mt-5 px-2 text-xl font-bold">
+                     <span>Kağıt</span>
+                     <span>
+                        Toplam Atık Miktarı : {wastes && wastes[5]?.quantity} kg
+                     </span>
+                  </div>
+                  <div className="w-full h-3/4">
+                     <img
+                        src={ahsap}
+                        alt="resim"
+                        className="object-cover w-full h-full rounded-t-md"
+                     />
+                  </div>
+               </div>
+            </div>
+         </div>
+
          <div className="profile-icon">
             <img src={yildiz} className="w-full h-full" alt="" />
          </div>
 
          <div className="bg-lacivert py-4  px-5 items-center my-2 w-10/12 m-auto text-white">
             <div className="flex justify-between">
-               <h1>Haftalık Puanınız</h1>
-               <p>
-                  {user.score}
-                  <i className="fa-solid fa-bullseye ml-2"></i>
-               </p>
-            </div>
-         </div>
-
-         <div className="bg-lacivert py-4  px-5 items-center my-2 w-10/12 m-auto text-white">
-            <div className="flex justify-between">
-               <h1>Genel Puanınız</h1>
+               <h1>Puanınız</h1>
                <p>
                   {user.score}
                   <i className="fa-solid fa-bullseye ml-2"></i>

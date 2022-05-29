@@ -24,8 +24,8 @@
 .profile-icon {
    text-align: center;
    margin: auto;
-   width: 320px;
-   height: 320px;
+   width: 270px;
+   height: 270px;
 }
 
 .score-container {
@@ -65,4 +65,8 @@
 .score-right {
    width: 30%;
    height: 200px;
+}
+
+.profile-wastes {
+   margin-top: 50px;
 }
