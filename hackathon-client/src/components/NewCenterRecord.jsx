@@ -64,7 +64,7 @@ function NewCenterRecord() {
                   type="text"
                   value={capacity}
                   onChange={(e) => setCapacity(e.target.value)}
-                  placeholder="Kapasite"
+                  placeholder="Kapasite (kg)"
                   className="w-full outline-none py-1 px-3 border-2 rounded mb-2"
                />
 

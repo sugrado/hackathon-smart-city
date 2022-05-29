@@ -31,6 +31,16 @@ namespace HackathonServer.Business.Services
                 .Select(p => p.Name)
                 .FirstOrDefaultAsync();
 
+            var checkWasteCenter = await _context
+                .WasteCenters
+                .AsNoTracking()
+                .Where(p => !p.Deleted &&
+                            p.NeighbourhoodId == addWasteCenterDto.NeighbourhoodId)
+                .AnyAsync();
+
+            if (checkWasteCenter)
+                return new ErrorDataResult<WasteCenter>(neighbourhoodName + " Atık Merkezi daha önceden oluşturulmuş!");
+
             var result = await Create(new WasteCenter
             {
                 Email = addWasteCenterDto.Email,
