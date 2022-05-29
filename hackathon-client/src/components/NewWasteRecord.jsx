@@ -111,21 +111,26 @@ function NewWasteRecord() {
         </div>
         <div className="right-panel">
           <div>
-            {products.map((product, index) => (
-              <div
-                key={index}
-                className="py-2 px-3 bg-buyuksehir text-black flex justify-between mb-2"
-              >
-                <span>
-                  {
-                    categories.find((a) => a.id === Number(product.categoryId))
-                      .name
-                  }
-                  &nbsp; Atığı
-                </span>
-                <span>{product.unitSize} kg</span>
-              </div>
-            ))}
+            {products.length < 1 ? (
+              <p className="text-lg p-2">Liste boş</p>
+            ) : (
+              products.map((product, index) => (
+                <div
+                  key={index}
+                  className="py-2 px-3 bg-buyuksehir text-black flex justify-between mb-2"
+                >
+                  <span>
+                    {
+                      categories.find(
+                        (a) => a.id === Number(product.categoryId)
+                      ).name
+                    }
+                    &nbsp; Atığı
+                  </span>
+                  <span>{product.unitSize} kg</span>
+                </div>
+              ))
+            )}
           </div>
           <button
             className="btn self-end"
