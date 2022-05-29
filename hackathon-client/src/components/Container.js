@@ -118,7 +118,11 @@ function Container() {
                      src={belediye}
                   />
                   <img className="w-16 h-16" src={logo} alt="resim" />
-                  <p className="ml-5 text-2xl font-bold">Atık Kazanç Sistemi</p>
+                  <NavLink to="/">
+                     <p className="ml-5 text-2xl font-bold">
+                        Atık Kazanç Sistemi
+                     </p>
+                  </NavLink>
                </div>
                {isAuthenticated ? (
                   <div className="group relative text-white">
