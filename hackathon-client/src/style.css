@@ -1,6 +1,7 @@
 .panel-container {
    display: flex;
    justify-content: space-between;
+   margin-top: 30px;
 }
 .left-panel {
    width: 65%;
@@ -69,4 +70,8 @@
 
 .profile-wastes {
    margin-top: 50px;
+}
+
+.container-newCenter {
+   margin: 30px auto;
 }
