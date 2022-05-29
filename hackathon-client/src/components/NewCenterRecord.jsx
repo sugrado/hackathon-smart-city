@@ -34,6 +34,10 @@ function NewCenterRecord() {
             (res) => {
                if (res.data.success) {
                   toast.success(res.data.message);
+                  setAddress("");
+                  setCapacity("");
+                  setMail("");
+                  setPhone("");
                }
             },
             (err) => {
