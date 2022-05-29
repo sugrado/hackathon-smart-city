@@ -72,6 +72,8 @@ function Container() {
             },
             (err) => {
                toast.error(err.response.data.message);
+               setLogInEmail("");
+               setLogInPassword("");
             }
          );
    };
