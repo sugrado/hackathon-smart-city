@@ -58,7 +58,7 @@ namespace HackathonServer.Business.Services
                 .Select(p => new WasteCenterPreviewDto
                 {
                     WasteCenter = p,
-                    Users = p.WasteRecords.Select(c => c.Citizen)
+                    Users = p.WasteRecords.Select(c => c.Citizen).Distinct()
                 })
                 .FirstOrDefaultAsync();
 
